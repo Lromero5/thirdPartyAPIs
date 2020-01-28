@@ -9,50 +9,49 @@ $("#currentDay").text(todayIs);
 console.log("moment", moment().hours());
 
 
-//This four loop creates the elements on the page
+//This four loop dynamically creates the elements on the page
 for (var i = 9; i < 18; i++){
-    //p variable creates a <p> element will hold the time
-    var p = $("<p>").text(i + ":00am  ");
-    //this if statement will change the time from military time to standard time
-    //standard business hours should be 9 a.m. to 5 p.m.  
-        if (i > 12){
-            p.text(i - 12 + ":00pm  ");
-        }
-        //this adds a class to the p element
-        p.addClass("hour");
+  //p variable creates a <p> element will hold the time
+  var p = $("<p></p>").text(i + ":00am  ");
+  //this if statement will change the time from military time to standard time
+  //standard business hours should be 9 a.m. to 5 p.m.  
+      if (i > 12){
+          p.text(i - 12 + ":00pm  ");
+      }
+      //this adds the hour class to the p element
+      p.addClass("hour col-md-2");
 
-    //this variable will create a text area where users can input data.
-    var textbox = $("<textarea>");
-    //this will give each of the textarea elements the id of input, plus what number it is on.
-    textbox.attr("id", "input"+i);
-    textbox.attr("class", "description");
+  //this variable will create a text area where users can input data.
+  var textbox = $("<textarea></textarea>");
+  //this will give each of the textarea elements the id of input, plus what number it is on.
+  textbox.attr("id", "input"+i);
+  textbox.addClass("description col-md-8"); 
 
-    //this will create a button on the page, and attach attributes
-    var button = $("<button>").text("click to save");
-    button.attr("name", i)
-    button.attr("class", "saveBtn");
-    
-    //this creates a div on the page
-    var divE = $("<div>").append(p, textbox, button);
-    divE.addClass("time-block");
-   
-    //this statement will log and assign classes to past, future, and present
-    //The classes assigned will color code to reflect whether the time slot is in the past, the present, or the future. This will change depending on the time of day.
+  //this will create a button on the page, and attach attributes
+  var button = $("<button></button>").text("click to save");
+  button.attr("name", i)
+  button.addClass("saveBtn col-md-2");
+  
+  //this creates a div on the page
+  var divE = $("<div></div>").append(p, textbox, button);
+  divE.addClass("time-block row");
+ 
+  //this statement will log and assign classes to past, future, and present
+  //The classes assigned will color code to reflect whether the time slot is in the past, the present, or the future. This will change depending on the time of day.
 
-    if ( i > moment().hours()){
-      console.log("future event", i);
-       divE.attr("class", "future")
-    } else if ( i < moment().hours()){
-      console.log("this is past event", i);
-      divE.attr("class", "past")
-    } else if (i == moment().hours()){
-      console.log("current", i);
-     divE.attr("class", "present")
-     }
-    //this will append it all to the page
-    $(".container").append(divE);
+  if ( i > moment().hours()){
+    console.log("future event", i);
+     textbox.addClass("future")
+  } else if ( i < moment().hours()){
+    console.log("this is past event", i);
+    textbox.addClass("past")
+  } else if (i == moment().hours()){
+    console.log("present", i);
+    textbox.addClass("present")
+   }
+  //this will append it all to the page
+  $(".container").append(divE);
 }
-
 
 //this is the on click event for the saveBtn 
 $(document).on("click", ".saveBtn", function(){

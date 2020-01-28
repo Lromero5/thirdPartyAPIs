@@ -4,15 +4,17 @@ body {
   line-height: 1;
 }
 
-textarea{
+/* this class is applied to the textare element*/
+ textarea{
   background: transparent;
   border: none;
   resize: none;
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
-}
+} 
 
+/* this class is attached to the top of the page */
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -26,17 +28,20 @@ textarea{
   white-space: pre-wrap;
 }
 
+/* this class is attached to the divs */
 .time-block{
   text-align: center;
   border-radius: 15px;
 }
 
+/* this class is attached to the divs */
 .row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;;
 }
 
+/* this class is attached to p element that holds the hours on the left */
 .hour {
   background-color: #ffffff;
   color: #000000;
@@ -45,24 +50,28 @@ textarea{
   display: inline-block;
 }
 
+/* this class will be attached to any element that already past */
 .past {
   background-color: #d3d3d3;
   color: white;
   border: solid;
 }
 
+/* this will be attached to any element that is present */
 .present {
   background-color: #ff6961;
   color: white;
   border: solid;
 }
 
+/* this class will be attached to all future times */
 .future {
   background-color: #77dd77;
   color: white;
   border: solid;
 }
 
+/* this class is attched to the save button */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
